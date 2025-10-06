@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  npm-sync:
+    container_name: npm-sync
+    image: ghcr.io/jeffersonraimon/npm-sync:latest
+    restart: unless-stopped
+    volumes:
+      - ./config.yml:/app/config.yml:ro
+    environment:
+      - TZ=America/Bahia
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
